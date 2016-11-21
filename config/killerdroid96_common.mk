@@ -1,3 +1,8 @@
+HOSTNAME := $(shell uname -n)
+ifeq ($(HOSTNAME),flashbox)
+    PRODUCT_DEFAULT_DEV_CERTIFICATE := .keys/releasekey
+endif
+
 #KillerDroid96 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.user=KillerDroid96 \
