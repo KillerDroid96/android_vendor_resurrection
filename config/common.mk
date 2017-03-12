@@ -48,6 +48,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
+# My Addons
+PRODUCT_PACKAGES += \
+    AdAway \
+    KernelAdiutor \
+    SnapBrowser \
+    SnapdragonGallery \
+    SnapdragonCamera \
+    OmniJaws \
+    OmniClock \
+    Apollo 
+    
 # OMS ThemeInterfacer
 PRODUCT_PACKAGES += \
    ThemeInterfacer
@@ -323,9 +334,9 @@ DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 PRODUCT_VERSION = 5.8.2
 ifeq ($(WITH_MAGISK),true)
 ifneq ($(RR_BUILDTYPE),)
-RR_VERSION := RR-N-MAGISK-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-$(RR_BUILDTYPE)
+RR_VERSION := DD-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
 else
-RR_VERSION := RR-N-MAGISK-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)
+RR_VERSION := DD-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
 endif
 endif
 
@@ -337,6 +348,10 @@ RR_VERSION := RR-N-CMSU-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)
 endif
 endif
 
+# KillerDroid96 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.user=KillerDroid96 \
+    
 PRODUCT_PROPERTY_OVERRIDES += \
  ro.rr.version=$(RR_VERSION) \
  ro.modversion=$(RR_VERSION) \

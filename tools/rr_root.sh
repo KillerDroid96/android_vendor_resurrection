@@ -24,9 +24,9 @@
 
 echo -e ${ylw}"\n\n ▼ Which root option do you want?\n"${txtrst}
 echo -e "";
-echo -e ${blu}" 〉 1- MAGISK "${txtrst}${red}"    ︱ Build with Magisk Manager and zip"${txtrst}
+echo -e ${blu}" 〉 1- MAGISK "${txtrst}${red}"     ︱ Build with Magisk Manager and zip"${txtrst}
 echo -e "";
-echo -e ${blu}" 〉 2- CM "${txtrst}${red}"  ︱ Build with CM Root built in"${txtrst}
+echo -e ${blu}" 〉 2- CM "${txtrst}${red}"         ︱ Build with CM Root built in"${txtrst}
 echo -e "";
 echo -e ${blu}" 🕑  30/sec Time-out"${txtrst}${red}"︱ Default option"${txtrst}
 echo -e "";
