@@ -217,11 +217,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/magisk.zip:system/addon.d/magisk.zip
 
-# Magisk Root Flag
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.rr.root=magisk
-endif
-
 # Exchange support
 PRODUCT_PACKAGES += \
     Exchange2
