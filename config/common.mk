@@ -66,20 +66,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.substratum.verified=true
 
-ifeq ($(WITH_MAGISK),true)
-# Magisk Manager
-PRODUCT_PACKAGES += \
-    MagiskManager
-
-# Copy Magisk zip
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/zip/magisk.zip:system/addon.d/magisk.zip
-
-# Magisk Root Flag
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.rr.root=magisk
-endif
-
 # Enable Google Assistant on all devices.
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opa.eligible_device=true
@@ -223,6 +209,19 @@ PRODUCT_PACKAGES += \
     OmniJaws \
     ThemeInterfacer
 
+# Magisk Manager
+PRODUCT_PACKAGES += \
+    MagiskManager
+
+# Copy Magisk zip
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/magisk.zip:system/addon.d/magisk.zip
+
+# Magisk Root Flag
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.rr.root=magisk
+endif
+
 # Exchange support
 PRODUCT_PACKAGES += \
     Exchange2
@@ -314,39 +313,26 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_PACKAGES += \
     procmem \
     procrank
-endif
 
 # Conditionally build in su
 ifeq ($(WITH_SU),true)
 PRODUCT_PACKAGES += \
     su
-
-# CM Root Flag
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.rr.root=cm_root
+endif
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=2
+    persist.sys.root_access=1
 
 DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
 PRODUCT_VERSION = 5.8.2
-ifeq ($(WITH_MAGISK),true)
 ifneq ($(RR_BUILDTYPE),)
 RR_VERSION := DD-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
 else
 RR_VERSION := DD-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
-endif
 endif
 
-ifeq ($(WITH_SU),true)
-ifneq ($(RR_BUILDTYPE),)
-RR_VERSION := DD-N-CMSU-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-$(RR_BUILDTYPE)
-else
-RR_VERSION := DD-N-CMSU-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)
-endif
-endif
 
 # KillerDroid96 
 PRODUCT_PROPERTY_OVERRIDES += \
