@@ -55,7 +55,6 @@ PRODUCT_PACKAGES += \
     SnapBrowser \
     SnapdragonGallery \
     SnapdragonCamera \
-    OmniJaws \
     OmniClock \
     Apollo 
     
@@ -63,14 +62,32 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
    ThemeInterfacer
 
+# OMS Verified
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.substratum.verified=true
+
+ifeq ($(WITH_MAGISK),true)
+# Magisk Manager
+PRODUCT_PACKAGES += \
+    MagiskManager
+
+# Copy Magisk zip
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/zip/magisk.zip:system/addon.d/magisk.zip
+
+# Magisk Root Flag
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.rr.root=magisk
+endif
+
 # Enable Google Assistant on all devices.
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opa.eligible_device=true
 
 # Default notification/alarm sounds
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.notification_sound=Argon.ogg \
-    ro.config.alarm_alert=Hassium.ogg
+    ro.config.notification_sound=Chime.ogg \
+    ro.config.alarm_alert=Flow.ogg
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Thank you, please drive thru!
@@ -206,14 +223,6 @@ PRODUCT_PACKAGES += \
     OmniJaws \
     ThemeInterfacer
 
-# Magisk Manager
-PRODUCT_PACKAGES += \
-    MagiskManager
-
-# Copy Magisk zip
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/magisk.zip:system/addon.d/magisk.zip
-
 # Exchange support
 PRODUCT_PACKAGES += \
     Exchange2
@@ -305,20 +314,25 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_PACKAGES += \
     procmem \
     procrank
+endif
 
 # Conditionally build in su
 ifeq ($(WITH_SU),true)
 PRODUCT_PACKAGES += \
     su
-endif
+
+# CM Root Flag
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.rr.root=cm_root
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=1
+    persist.sys.root_access=2
 
 DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
 PRODUCT_VERSION = 5.8.2
+ifeq ($(WITH_MAGISK),true)
 ifneq ($(RR_BUILDTYPE),)
 RR_VERSION := DD-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
 else
