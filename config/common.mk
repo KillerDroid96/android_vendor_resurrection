@@ -54,9 +54,7 @@ PRODUCT_PACKAGES += \
     KernelAdiutor \
     SnapBrowser \
     SnapdragonGallery \
-    SnapdragonCamera \
-    OmniClock \
-    Apollo 
+    SnapdragonCamera 
     
 # OMS ThemeInterfacer
 PRODUCT_PACKAGES += \
@@ -72,8 +70,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Default notification/alarm sounds
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.notification_sound=Chime.ogg \
-    ro.config.alarm_alert=Flow.ogg
+    ro.config.ringtone=CyanTone.ogg \
+    ro.config.notification_sound=CyanMessage.ogg \
+    ro.config.alarm_alert=Hassium.ogg 
+   
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Thank you, please drive thru!
