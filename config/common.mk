@@ -93,18 +93,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/Features.mkdn:system/etc/RR/Features.txt
 
-# NexusLauncher
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/NexusLauncher/NexusLauncher.apk:system/app/NexusLauncher/NexusLauncher.apk
-
-# Wallpaper
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/Wallpaper/Wallpaper.apk:system/app/Wallpaper/Wallpaper.apk
-
-# DeskClock
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/DeskClock/DeskClock.apk:system/app/DeskClock/DeskClock.apk
-
 # DU Utils Library
 PRODUCT_BOOT_JARS += \
     org.dirtyunicorns.utils
@@ -195,12 +183,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ResurrectionOTA \
     ResurrectionStats \
-    Trebuchet \
     MusicFX \
     Eleven \
     LockClock \
     CMSettingsProvider \
-    ExactCalculator \
     LiveLockScreenService \
     WeatherProvider \
     OmniStyle \
