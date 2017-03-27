@@ -48,9 +48,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
-# OMS THEMEINTERFACER
+# My Addons
+PRODUCT_PACKAGES += \
+    AdAway \
+    KernelAdiutor \
+    SnapBrowser \
+    SnapdragonGallery \
+    SnapdragonCamera 
+    
+# OMS ThemeInterfacer
 PRODUCT_PACKAGES += \
    ThemeInterfacer
+
+# OMS Verified
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.substratum.verified=true
 
 # Enable Google Assistant on all devices.
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -58,8 +70,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Default notification/alarm sounds
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.notification_sound=Argon.ogg \
-    ro.config.alarm_alert=Hassium.ogg
+    ro.config.ringtone=CyanTone.ogg \
+    ro.config.notification_sound=CyanMessage.ogg \
+    ro.config.alarm_alert=Hassium.ogg 
+   
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Thank you, please drive thru!
@@ -309,11 +323,15 @@ DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
 PRODUCT_VERSION = 5.8.2
 ifneq ($(RR_BUILDTYPE),)
-RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-$(RR_BUILDTYPE)
+RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
 else
-RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)
+RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
 endif
 
+# KillerDroid96 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.user=KillerDroid96 \
+    
 PRODUCT_PROPERTY_OVERRIDES += \
  ro.rr.version=$(RR_VERSION) \
  ro.modversion=$(RR_VERSION) \
