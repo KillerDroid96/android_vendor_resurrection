@@ -53,8 +53,8 @@ PRODUCT_PACKAGES += \
     AdAway \
     KernelAdiutor \
     SnapBrowser \
-    SnapdragonGallery \
-    SnapdragonCamera 
+    SnapdragonCamera \
+    Substratum
     
 # OMS ThemeInterfacer
 PRODUCT_PACKAGES += \
