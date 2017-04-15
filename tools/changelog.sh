@@ -46,13 +46,12 @@ if [ -z $days_to_log ];then
 echo ""
 echo ${ylw}" ▼ For how many days changelog do you want to generate?"${txtrst}
 echo ""
-echo -e ${blu}" 5/sec Time-out "${txtrst}${red}"︱ 3 Days by default"${txtrst}
+echo -e ${blu}" 🕑  30/sec Time-out "${txtrst}${red}"︱ 7 Days by default"${txtrst}
 echo -e "";
 echo -e ${cya}" ▼ Type a number"${txtrst}
 echo -e "";
 # use 'export days_to_log=5' before '. build/envsetup.sh' were 5 is days to log
-if [ -z $days_to_log ];then
-read -r -t 5 days_to_log || days_to_log=3
+read -r -t 30 days_to_log || days_to_log=7
 fi
 echo >> $Changelog;
 echo " ▼ $source_name Ver 5.8.2 Changelog"    >> $Changelog;

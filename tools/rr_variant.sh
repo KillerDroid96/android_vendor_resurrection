@@ -40,16 +40,12 @@ echo -e ${blu}" 〉 7- Experimental "${txtrst}${red}"︱ Only for the experiment
 echo -e "";
 echo -e ${blu}" 〉 8- Final "${txtrst}${red}"       ︱ Only for the final releases by the RR-Team"${xtrst}
 echo -e "";
-echo -e ${blu}" 〉 5/sec Time-out"${txtrst}${red}"︱ Default option"${txtrst}
+echo -e ${blu}" 🕑  30/sec Time-out"${txtrst}${red}"︱ Default option"${txtrst}
 echo -e "";
 echo -e ${cya}" ▼ Pick a number"${txtrst}
 echo -e "";
 $normal
-read -t 5 askvariant || autovariant=1
-sleep 1
-  if [ "$autovariant" == "1" ]
-  then
- RR_BUILDTYPE=Official
+read -t 30 askvariant
 sleep 1
 if [ "$askvariant" == "1" ]
 then
