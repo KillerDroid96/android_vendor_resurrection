@@ -332,6 +332,7 @@ endif
 # KillerDroid96 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.user=KillerDroid96 \
+    rr.build.type=Custom 
     
 PRODUCT_PROPERTY_OVERRIDES += \
  ro.rr.version=$(RR_VERSION) \
