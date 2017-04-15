@@ -329,6 +329,10 @@ else
 RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
 endif
 
+# KillerDroid96 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.user=KillerDroid96 \
+    
 PRODUCT_PROPERTY_OVERRIDES += \
  ro.rr.version=$(RR_VERSION) \
  ro.modversion=$(RR_VERSION) \
