@@ -45,7 +45,11 @@ echo -e "";
 echo -e ${cya}" ▼ Pick a number"${txtrst}
 echo -e "";
 $normal
-read -t 5 askvariant 
+read -t 5 askvariant || autovariant=1
+sleep 1
+  if [ "$autovariant" == "1" ]
+  then
+ RR_BUILDTYPE=Official
 sleep 1
 if [ "$askvariant" == "1" ]
 then
