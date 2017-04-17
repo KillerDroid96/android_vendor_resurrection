@@ -54,7 +54,8 @@ PRODUCT_PACKAGES += \
     KernelAdiutor \
     SnapBrowser \
     SnapdragonGallery \
-    SnapdragonCamera 
+    SnapdragonCamera \
+    Spectrum
     
 # OMS ThemeInterfacer
 PRODUCT_PACKAGES += \
