@@ -11,6 +11,3 @@ PRODUCT_PACKAGES += \
     SnapdragonGallery \
     SnapdragonCamera \
     Spectrum
-
-# Don't compile SystemUITests
-EXCLUDE_SYSTEMUI_TESTS := true
