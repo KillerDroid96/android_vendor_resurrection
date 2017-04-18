@@ -48,18 +48,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
-# My Addons
-PRODUCT_PACKAGES += \
-    AdAway \
-    KernelAdiutor \
-    SnapBrowser \
-    SnapdragonGallery \
-    SnapdragonCamera \
-    Spectrum
-
-# Don't compile SystemUITests
-EXCLUDE_SYSTEMUI_TESTS := true
-
 # OMS ThemeInterfacer
 PRODUCT_PACKAGES += \
    ThemeInterfacer
@@ -163,6 +151,9 @@ PRODUCT_COPY_FILES += \
 # This is CM!
 PRODUCT_COPY_FILES += \
     vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
+
+# Include My killerdroid96.mk
+include vendor/cm/config/killerdroid96.mk
 
 # Include CM audio files
 include vendor/cm/config/cm_audio.mk
@@ -289,7 +280,7 @@ PRODUCT_PACKAGES += \
 
 #Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
-     libffmpeg_extractor \
+    libffmpeg_extractor \
     libffmpeg_omx \
     media_codecs_ffmpeg.xml
 
@@ -332,11 +323,6 @@ RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-Kill
 else
 RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
 endif
-
-# KillerDroid96 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.user=KillerDroid96 \
-    rr.build.type=Custom 
     
 PRODUCT_PROPERTY_OVERRIDES += \
  ro.rr.version=$(RR_VERSION) \
