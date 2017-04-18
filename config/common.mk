@@ -153,7 +153,7 @@ PRODUCT_COPY_FILES += \
     vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
 # Include My killerdroid96.mk
-include vendor/cm/config/killerdroid96.mk
+include vendor/cm/config/killerdroid96_common.mk
 
 # Include CM audio files
 include vendor/cm/config/cm_audio.mk
