@@ -1,0 +1,139 @@
+# Flash Kernel initialization script
+# Pieces taken from @anarkia1976, @franciscofranco, @frap129, and @flar2
+
+# Import Spectrum profiles
+import /init.profiles.rc
+
+on boot
+   # Wake gestures
+   chown root root /sys/android_touch/wake_gestures
+   chmod 666 /sys/android_touch/wake_gestures
+   write /sys/android_touch/wake_gestures 0
+   chmod 644 /sys/android_touch/wake_gestures
+
+   # Disable double tap to wake
+   chown root root /sys/android_touch/doubletap2wake
+   chmod 666 /sys/android_touch/doubletap2wake
+   write /sys/android_touch/doubletap2wake 0
+   chmod 644 /sys/android_touch/doubletap2wake
+
+   # Disable sweep to sleep
+   chown root root /sys/android_touch/sweep2sleep
+   chmod 666 /sys/android_touch/sweep2sleep
+   write /sys/android_touch/sweep2sleep 0
+   chmod 644 /sys/android_touch/sweep2sleep
+
+   # Enable sweep to wake in up and down
+   chown root root /sys/android_touch/sweep2wake
+   chmod 666 /sys/android_touch/sweep2wake
+   write /sys/android_touch/sweep2wake 12
+   chmod 644 /sys/android_touch/sweep2wake
+
+   # Enable camera gesture
+   chown root root /sys/android_touch/camera_gesture
+   chmod 666 /sys/android_touch/camera_gesture
+   write /sys/android_touch/camera_gesture 1
+   chmod 644 /sys/android_touch/camera_gesture
+
+   # Set vibration strength to 27 (50% in EXKM)
+   chown root root /sys/android_touch/vib_strength
+   chmod 666 /sys/android_touch/vib_strength
+   write /sys/android_touch/vib_strength 27
+   chmod 644 /sys/android_touch/vib_strength
+
+on post-fs
+   write /dev/cpuset/foreground/cpus 0-7
+   write /dev/cpuset/foreground/boost/cpus 0-7
+   write /dev/cpuset/background/cpus 0-7
+   write /dev/cpuset/system-background/cpus 0-7
+
+on property:sys.boot_completed=1
+   # according to Qcom this legacy value improves first launch latencies
+   # stock value is 512k
+   # from franciscofranco
+   setprop dalvik.vm.heapminfree 2m
+
+   # I/O scheduler - maple - 512kb
+   write /sys/block/mmcblk0/queue/scheduler maple
+   write /sys/block/mmcblk0/queue/read_ahead_kb 512
+   write /sys/block/mmcblk0/queue/iosched/writes_starved 4
+   write /sys/block/mmcblk0/queue/iosched/fifo_batch 16
+   write /sys/block/mmcblk0/queue/iosched/sync_read_expire 350
+   write /sys/block/mmcblk0/queue/iosched/sync_write_expire 550
+   write /sys/block/mmcblk0/queue/iosched/async_read_expire 250
+   write /sys/block/mmcblk0/queue/iosched/async_write_expire 450
+   write /sys/block/mmcblk0/queue/iosched/sleep_latency_multiple 10
+
+   # Make sure governor sys paths have the correct permissions
+   chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+   chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+   chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+   chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+
+   # Make sure all the cpufreq sys paths have the correct permissions
+   chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+   chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+   chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+   chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+   chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+   chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+   chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+   chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+
+   # Core control disabled, msm_thermal enabled
+   write /sys/module/msm_thermal/core_control/enabled 0
+   write /sys/module/msm_thermal/parameters/enabled Y
+
+   # Lazyplug
+   write /sys/module/lazyplug/parameters/lazyplug_active 1
+
+   # Backlight dimmer
+   write /sys/module/mdss_fb/parameters/backlight_dimmer 1
+
+   # Tune Adrenoboost
+   write /sys/devices/soc.0/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/adrenoboost 1
+
+   # Sound settings
+   write /sys/kernel/sound_control/speaker_gain "25 25"
+   write /sys/kernel/sound_control/headphone_pa_gain "1 1"
+   write /sys/kernel/sound_control/mic_gain 10
+   write /sys/kernel/sound_control/headphone_gain "6 6"
+
+   # UKSM
+   write /sys/kernel/mm/uksm/run 1
+
+   # Very light LMK profile
+   write /sys/module/lowmemorykiller/parameters/minfree "7160,14320,21480,28640,35800,42960"
+
+   # Vibration strength
+   write /sys/class/timed_output/vibrator/vmax_mv_strong 2000
+   write /sys/class/timed_output/vibrator/vmax_mv_light 1650
+
+   # Wakelock dividers
+   write /sys/module/bcmdhd/parameters/wlrx_divide 8
+   write /sys/module/bcmdhd/parameters/wlctrl_divide 8
+
+   # re-enable retention idle state
+   # fix-up is merged in the Kernel
+   write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 1
+   write /sys/module/lpm_levels/system/a53/cpu1/retention/idle_enabled 1
+   write /sys/module/lpm_levels/system/a53/cpu2/retention/idle_enabled 1
+   write /sys/module/lpm_levels/system/a53/cpu3/retention/idle_enabled 1
+   write /sys/module/lpm_levels/system/a57/cpu4/retention/idle_enabled 1
+   write /sys/module/lpm_levels/system/a57/cpu5/retention/idle_enabled 1
+   write /sys/module/lpm_levels/system/a57/cpu6/retention/idle_enabled 1
+   write /sys/module/lpm_levels/system/a57/cpu7/retention/idle_enabled 1
+   write /sys/module/lpm_levels/system/a53/a53-l2-retention/idle_enabled 1
+   write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 1
+
+   # bcmdhd wakeup sources
+   write /sys/module/wakeup/parameters/enable_wlan_rx_wake_ws 0
+   write /sys/module/wakeup/parameters/enable_wlan_ctrl_wake_ws 0
+   write /sys/module/wakeup/parameters/enable_wlan_wake_ws 0
+   write /sys/module/wakeup/parameters/enable_ipa_ws 0
+   write /sys/module/wakeup/parameters/enable_timerfd_ws 0
+   write /sys/module/wakeup/parameters/enable_netlink_ws 0
+
+   # Special power script
+   exec u:r:init:s0 root root -- /init.special_power.sh
+   exec u:r:su:s0 root root -- /init.special_power.sh
