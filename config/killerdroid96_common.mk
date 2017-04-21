@@ -10,4 +10,9 @@ PRODUCT_PACKAGES += \
     SnapBrowser \
     SnapdragonGallery \
     SnapdragonCamera \
-    Spectrum
+    Spectrum \
+    Turbo \
+    LiveWallpapersPicker \
+    NexusWallpapersStubPrebuilt \
+    WallpaperPickerGooglePrebuilt \
+    WallpapersUsTwo
