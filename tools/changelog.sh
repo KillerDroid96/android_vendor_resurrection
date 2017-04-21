@@ -51,7 +51,6 @@ echo -e "";
 echo -e ${cya}" ▼ Type a number"${txtrst}
 echo -e "";
 # use 'export days_to_log=5' before '. build/envsetup.sh' were 5 is days to log
-if [ -z $days_to_log ];then
 read -r -t 5 days_to_log || days_to_log=3
 fi
 echo >> $Changelog;
