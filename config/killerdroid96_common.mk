@@ -1,5 +1,5 @@
 HOSTNAME := $(shell uname -n)
-ifeq ($(HOSTNAME),flashbox)
+ifeq ($(HOSTNAME),KillerDroid96)
     PRODUCT_DEFAULT_DEV_CERTIFICATE := .keys/releasekey
 endif
 
