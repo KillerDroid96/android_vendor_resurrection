@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-HOSTNAME := $(shell uname -n)
-ifeq ($(HOSTNAME),flashbox)
-    PRODUCT_DEFAULT_DEV_CERTIFICATE := .keys/releasekey
-endif
-
-=======
->>>>>>> parent of 92a32810... Vendor: Start signing my personal builds [2/2]
 #KillerDroid96 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.user=KillerDroid96 \
