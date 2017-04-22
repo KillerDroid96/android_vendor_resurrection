@@ -37,11 +37,12 @@ ifneq ($(filter angler bullhead marlin sailfish,$(TARGET_DEVICE)),)
         vendor/cm/prebuilt/lib64/libgeswallpapers-jni.so:system/lib64/libgeswallpapers-jni.so
 endif
 
-# Copy over our ramdisk files for Flash kernel
+# Copy over our ramdisk files
 PRODUCT_COPY_FILES += \
-   vendor/cm/prebuilt/ramdisk/init.flash.rc:root/init.flash.rc \
-   vendor/cm/prebuilt/ramdisk/init.profiles.rc:root/init.profiles.rc \
-   vendor/cm/prebuilt/ramdisk/init.profiles.sh:root/init.profiles.sh \
-   vendor/cm/prebuilt/ramdisk/init.special_power.sh:root/init.special_power.sh \
-   vendor/cm/prebuilt/ramdisk/msm_irqbalance.conf:root/msm_irqbalance.conf
+    vendor/cm/prebuilt/ramdisk/init.flash.rc:root/init.flash.rc \
+    vendor/cm/prebuilt/ramdisk/init.profiles.rc:root/init.profiles.rc \
+    vendor/cm/prebuilt/ramdisk/init.profiles.sh:root/init.profiles.sh \
+    vendor/cm/prebuilt/ramdisk/init.special_power.sh:root/init.special_power.sh \
+    vendor/cm/prebuilt/ramdisk/msm_irqbalance.conf:root/msm_irqbalance.conf
+
  
