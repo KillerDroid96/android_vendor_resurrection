@@ -33,6 +33,6 @@ ifneq ($(filter angler bullhead marlin sailfish,$(TARGET_DEVICE)),)
         libjpeg.so
 
     PRODUCT_COPY_FILES += \
-        vendor/flash/prebuilt/lib64/libgdx.so:system/lib64/libgdx.so \
-        vendor/flash/prebuilt/lib64/libgeswallpapers-jni.so:system/lib64/libgeswallpapers-jni.so
+        vendor/cm/prebuilt/lib64/libgdx.so:system/lib64/libgdx.so \
+        vendor/cm/prebuilt/lib64/libgeswallpapers-jni.so:system/lib64/libgeswallpapers-jni.so
 endif
