@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 HOSTNAME := $(shell uname -n)
-ifeq ($(HOSTNAME),KillerDroid96)
+ifeq ($(HOSTNAME),flashbox)
     PRODUCT_DEFAULT_DEV_CERTIFICATE := .keys/releasekey
 endif
 
