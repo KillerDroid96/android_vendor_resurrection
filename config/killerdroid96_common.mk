@@ -8,14 +8,15 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.substratum.verified=true
     
 # APPS
-PRODUCT_PACKAGES += \
-    AdAway \
-    KernelAdiutor \
-    SnapBrowser \
-    SnapdragonGallery \
-    SnapdragonCamera \
-    Spectrum \
-    Turbo 
+#PRODUCT_PACKAGES += \
+#    AdAway \
+#    KernelAdiutor \
+#    SnapBrowser \
+#    SnapdragonGallery \
+#    SnapdragonCamera \
+#    Spectrum \
+#    Turbo 
+
 # Copy over our ramdisk files
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/ramdisk/init.flash.rc:root/init.flash.rc \
