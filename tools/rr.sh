@@ -15,6 +15,8 @@ bldblu=${txtbld}$(tput setaf 4) # Bold blue
 bldcya=${txtbld}$(tput setaf 6) # Bold cyan
 normal='tput sgr0'
 
+./vendor/cm/tools/colors
+
 echo -e "";
 echo -e "";
 tput setaf 1
@@ -26,12 +28,12 @@ echo "	| |  \ \| ____|___ | |_| | |  | |   | ____( (___  | |_| | |_| | | | |";
 echo "	|_|   |_|_____|___/|____/|_|  |_|   |_____)\____)  \__)_|\___/|_| |_|";
 echo "	                                                                     ";
 tput setaf 3
-echo "		     ______              _          _______ ______               ";
-echo "		    (_____ \            (_)        (_______) _____)              ";
-echo "		     _____) )_____ ____  _ _   _    _     ( (____                ";
-echo "		    |  __  /| ___ |    \| ( \ / )  | |   | \____ \               ";
-echo "		    | |  \ \| ____| | | | |) X (   | |___| |____) )              ";
-echo "		    |_|   |_|_____)_|_|_|_(_/ \_)   \_____(______/               ";
+echo "		     ______              _          _______ ______                 ";
+echo "		    (_____ \            (_)        (_______) _____)                ";
+echo "		     _____) )_____ ____  _ _   _    _     ( (____                  ";
+echo "		    |  __  /| ___ |    \| ( \ / )  | |   | \____ \                 ";
+echo "		    | |  \ \| ____| | | | |) X (   | |___| |____) )                ";
+echo "		    |_|   |_|_____)_|_|_|_(_/ \_)   \_____(______/                 ";
 echo "	                                                                     ";
 tput setaf 2
 echo "	    ______                                     ___       _  _ _ _    ";
@@ -41,10 +43,10 @@ echo "	   \____ \| | | |/ ___) ___) ___ |/___)/___|_   __) | | | ||_|_|_|   ";
 echo "	   _____) ) |_| ( (__( (___| ____|___ |___ | | |  | |_| | | _ _ _    ";
 echo "	  (______/|____/ \____)____)_____|___/(___/  |_|  |____/ \_)_|_|_|   ";
 echo "	                                                                     ";
-tput setaf 4
+tput setaf 1
 echo -e " 〉Powered by ANDROID ™  // NOUGAT 7.1.2";
 echo -e "";
-tput setaf 1
+tput setaf 3
 echo -e " 〉Enjoy the Resurrection Remix OS // #GETRESURRECTED ";
 tput sgr0
 echo -e "";
