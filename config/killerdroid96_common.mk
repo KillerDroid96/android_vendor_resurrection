@@ -1,7 +1,10 @@
-#KillerDroid96 
+#Magisk SafteyNet (Overide Dangerous Props)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.user=KillerDroid96 \
-    rr.build.type=Custom
+    rr.build.type=Official \
+    ro.build.tags=release-keys \
+    ro.build.type=user \
+    ro.build.flavor=angler-user
      
 # OMS Verified
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -16,6 +19,7 @@ PRODUCT_PACKAGES += \
     SnapdragonCamera \
     Spectrum \
     Turbo 
+    
 # Copy over our ramdisk files
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/ramdisk/init.flash.rc:root/init.flash.rc \
