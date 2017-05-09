@@ -2,9 +2,7 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.user=KillerDroid96 \
     rr.build.type=Official \
-    ro.build.tags=release-keys \
-    ro.build.type=user \
-    ro.build.flavor=angler-user
+    rr.ota.version=Official
      
 # OMS Verified
 PRODUCT_PROPERTY_OVERRIDES := \
