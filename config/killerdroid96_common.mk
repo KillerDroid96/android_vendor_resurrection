@@ -1,22 +1,17 @@
-#Magisk SafteyNet (Overide Dangerous Props)
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.user=KillerDroid96 \
-    rr.build.type=Official \
-    rr.ota.version=Official
-     
+    ro.build.user=KillerDroid96   
+    
 # OMS Verified
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.substratum.verified=true
     
-# APPS
+# Prebuilts
 PRODUCT_PACKAGES += \
     AdAway \
     KernelAdiutor \
-    SnapBrowser \
-    SnapdragonGallery \
-    SnapdragonCamera \
+    Substratum \
     Spectrum \
-    Turbo 
+    Turbo
     
 # Copy over our ramdisk files
 PRODUCT_COPY_FILES += \
