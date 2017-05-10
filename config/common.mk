@@ -61,11 +61,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opa.eligible_device=true
 
 # Default notification/alarm sounds
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=CyanTone.ogg \
-    ro.config.notification_sound=CyanMessage.ogg \
-    ro.config.alarm_alert=Hassium.ogg 
-   
+PRODUCT_PROPERTY_OVERRIDES += \ 
+    ro.config.notification_sound=Argon.ogg \
+    ro.config.alarm_alert=Hassium.ogg   
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Thank you, please drive thru!
