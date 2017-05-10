@@ -1,10 +1,8 @@
 # Prebuilts
 PRODUCT_PACKAGES += \
-    AdAway \
     KernelAdiutor \
     Substratum \
-    Spectrum \
-    Turbo
+    Spectrum 
     
 # Copy over our ramdisk files
 PRODUCT_COPY_FILES += \
