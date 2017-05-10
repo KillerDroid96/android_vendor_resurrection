@@ -1,10 +1,3 @@
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.user=KillerDroid96   
-    
-# OMS Verified
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.substratum.verified=true
-    
 # Prebuilts
 PRODUCT_PACKAGES += \
     AdAway \
