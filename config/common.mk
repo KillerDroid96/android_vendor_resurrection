@@ -183,7 +183,7 @@ PRODUCT_PACKAGES += \
     ResurrectionOTA \
     ResurrectionStats \
     Trebuchet \
-    MusicFX \
+    AudioFX \
     CMFileManager \
     Eleven \
     LockClock \
@@ -197,6 +197,9 @@ PRODUCT_PACKAGES += \
     OmniJaws \
     ThemeInterfacer
 
+
+WITH_ROOT_METHOD ?= rootless
+ifeq ($(WITH_ROOT_METHOD), magisk)
 # Magisk Manager
 PRODUCT_PACKAGES += \
     MagiskManager
@@ -204,6 +207,7 @@ PRODUCT_PACKAGES += \
 # Copy Magisk zip
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/magisk.zip:system/addon.d/magisk.zip
+endif
 
 # Exchange support
 PRODUCT_PACKAGES += \
@@ -303,9 +307,6 @@ PRODUCT_PACKAGES += \
     su
 endif
 endif
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=1
 
 DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
