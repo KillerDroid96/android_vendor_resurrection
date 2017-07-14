@@ -190,12 +190,13 @@ PRODUCT_PACKAGES += \
     ResurrectionOTA \
     ResurrectionStats \
     Trebuchet \
-    MusicFX \
+    AudioFX \
     CMFileManager \
     Eleven \
     LockClock \
     CMSettingsProvider \
     ExactCalculator \
+    Jelly \
     LiveLockScreenService \
     WeatherProvider \
     OmniStyle \
@@ -203,6 +204,9 @@ PRODUCT_PACKAGES += \
     OmniJaws \
     ThemeInterfacer
 
+
+WITH_ROOT_METHOD ?= rootless
+ifeq ($(WITH_ROOT_METHOD), magisk)
 # Magisk Manager
 PRODUCT_PACKAGES += \
     MagiskManager
@@ -210,6 +214,7 @@ PRODUCT_PACKAGES += \
 # Copy Magisk zip
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/magisk.zip:system/addon.d/magisk.zip
+endif
 
 # Exchange support
 PRODUCT_PACKAGES += \
@@ -310,9 +315,6 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=1
-
 DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
 PRODUCT_VERSION = 5.8.3
@@ -326,7 +328,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
  ro.rr.version=$(RR_VERSION) \
  ro.modversion=$(RR_VERSION) \
  rr.build.type=$(RR_BUILDTYPE) \
- rr.ota.version= $(shell date +%Y%m%d)
+ rr.ota.version= $(shell date +%Y%m%d) \
+ ro.rr.tag=$(shell grep "refs/tags" .repo/manifest.xml  | cut -d'"' -f2 | cut -d'/' -f3)
 
 CM_DISPLAY_VERSION := $(RR_VERSION)
 
