@@ -26,7 +26,5 @@ echo -e "";
 echo -e ${blu}" ▪ Using magisk root! "${txtrst}
 export WITH_ROOT_METHOD="magisk";
 echo -e "";
-echo -e "";
 $normal
 sleep 1
-fi
