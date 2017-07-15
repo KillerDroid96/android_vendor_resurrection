@@ -25,7 +25,5 @@
 echo -e "";
 echo -e ${blu}" ▪ Building Official Variant "${txtrst}
 export RR_BUILDTYPE=Official
-echo -e "";
-echo -e "";
 $normal
 sleep 1
