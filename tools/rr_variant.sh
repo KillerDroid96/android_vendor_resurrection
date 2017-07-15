@@ -29,4 +29,3 @@ echo -e "";
 echo -e "";
 $normal
 sleep 1
-fi
