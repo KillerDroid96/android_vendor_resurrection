@@ -11,10 +11,10 @@ on boot
    write /sys/android_touch/wake_gestures 0
    chmod 644 /sys/android_touch/wake_gestures
 
-   # Enable double tap to wake
+   # Disable double tap to wake
    chown root root /sys/android_touch/doubletap2wake
    chmod 666 /sys/android_touch/doubletap2wake
-   write /sys/android_touch/doubletap2wake 1
+   write /sys/android_touch/doubletap2wake 0
    chmod 644 /sys/android_touch/doubletap2wake
 
    # Disable sweep to sleep
@@ -23,16 +23,16 @@ on boot
    write /sys/android_touch/sweep2sleep 0
    chmod 644 /sys/android_touch/sweep2sleep
 
-   # Enable sweep to wake in up and down
+   # Enable sweep to wake in up direction
    chown root root /sys/android_touch/sweep2wake
    chmod 666 /sys/android_touch/sweep2wake
-   write /sys/android_touch/sweep2wake 12
+   write /sys/android_touch/sweep2wake 4
    chmod 644 /sys/android_touch/sweep2wake
 
-   # Enable camera gesture
+   # Disable camera gesture
    chown root root /sys/android_touch/camera_gesture
    chmod 666 /sys/android_touch/camera_gesture
-   write /sys/android_touch/camera_gesture 1
+   write /sys/android_touch/camera_gesture 0
    chmod 644 /sys/android_touch/camera_gesture
 
    # Set vibration strength to 27 (50% in EXKM)
@@ -53,17 +53,6 @@ on property:sys.boot_completed=1
    # from franciscofranco
    setprop dalvik.vm.heapminfree 2m
 
-   # I/O scheduler - maple - 512kb
-   write /sys/block/mmcblk0/queue/scheduler maple
-   write /sys/block/mmcblk0/queue/read_ahead_kb 512
-   write /sys/block/mmcblk0/queue/iosched/writes_starved 4
-   write /sys/block/mmcblk0/queue/iosched/fifo_batch 16
-   write /sys/block/mmcblk0/queue/iosched/sync_read_expire 350
-   write /sys/block/mmcblk0/queue/iosched/sync_write_expire 550
-   write /sys/block/mmcblk0/queue/iosched/async_read_expire 250
-   write /sys/block/mmcblk0/queue/iosched/async_write_expire 450
-   write /sys/block/mmcblk0/queue/iosched/sleep_latency_multiple 10
-
    # Make sure governor sys paths have the correct permissions
    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
@@ -80,12 +69,12 @@ on property:sys.boot_completed=1
    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
    chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
 
-   # Core control disabled, msm_thermal enabled
-   write /sys/module/msm_thermal/core_control/enabled 0
-   write /sys/module/msm_thermal/parameters/enabled Y
+   # Enable Fingerprint boost
+   write /sys/kernel/fp_boost/enabled 1
 
-   # Lazyplug
-   write /sys/module/lazyplug/parameters/lazyplug_active 1
+   # Disable core control, enable msm_thermal
+   write /sys/module/msm_thermal/core_control/enabled 0
+   write /sys/module/msm_thermal/parameters/enabled 1
 
    # Backlight dimmer
    write /sys/module/mdss_fb/parameters/backlight_dimmer 1
@@ -94,7 +83,7 @@ on property:sys.boot_completed=1
    write /sys/devices/soc.0/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/adrenoboost 1
 
    # Sound settings
-   write /sys/kernel/sound_control/speaker_gain "25 25"
+   write /sys/kernel/sound_control/speaker_gain "23 23"
    write /sys/kernel/sound_control/headphone_pa_gain "1 1"
    write /sys/kernel/sound_control/mic_gain 10
    write /sys/kernel/sound_control/headphone_gain "6 6"
@@ -102,12 +91,16 @@ on property:sys.boot_completed=1
    # UKSM
    write /sys/kernel/mm/uksm/run 1
 
-   # Very light LMK profile
-   write /sys/module/lowmemorykiller/parameters/minfree "7160,14320,21480,28640,35800,42960"
-
    # Vibration strength
    write /sys/class/timed_output/vibrator/vmax_mv_strong 2000
    write /sys/class/timed_output/vibrator/vmax_mv_light 1650
+
+   # I/O scheduler - maple - 512kb
+   write /sys/block/mmcblk0/queue/scheduler maple
+   write /sys/block/mmcblk0/queue/read_ahead_kb 512
+
+   # Don't treat storage as rotational
+   write /sys/block/mmcblk0/queue/rotational 0
 
    # Wakelock dividers
    write /sys/module/bcmdhd/parameters/wlrx_divide 8
@@ -136,4 +129,3 @@ on property:sys.boot_completed=1
 
    # Special power script
    exec u:r:init:s0 root root -- /init.special_power.sh
-   exec u:r:su:s0 root root -- /init.special_power.sh
