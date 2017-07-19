@@ -53,8 +53,8 @@ PRODUCT_PACKAGES += \
    ThemeInterfacer
 
 # OMS Verified
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.substratum.verified=true
+#PRODUCT_PROPERTY_OVERRIDES := \
+ #   ro.substratum.verified=true
 
 # Enable Google Assistant on all devices.
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -150,7 +150,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
-# Include My killerdroid96.mk
+# Include My KillerDroid96.mk
 include vendor/cm/config/killerdroid96_common.mk
 
 # Include CM audio files
@@ -319,7 +319,7 @@ DEVICE_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
 PRODUCT_VERSION = 5.8.3
 ifneq ($(RR_BUILDTYPE),)
-RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
+RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-$(RR_BUILDTYPE)-KillerDroid96
 else
 RR_VERSION := RR-N-v$(PRODUCT_VERSION)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-KillerDroid96
 endif
