@@ -22,7 +22,6 @@
     blurev=${rev}$(tput setaf 4)
     normal='tput sgr0'
 
-
 echo -e "";
 echo -e ${blu}" ▪ Using magisk root! "${txtrst}
 export WITH_ROOT_METHOD="magisk";
