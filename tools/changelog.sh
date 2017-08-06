@@ -54,7 +54,7 @@ echo -e "";
 read -r -t 5 days_to_log || days_to_log=3
 fi
 echo >> $Changelog;
-echo " ▼ $source_name Ver 5.8.3 Changelog"    >> $Changelog;
+echo " ▼ $source_name Ver 5.8.4 Changelog"    >> $Changelog;
 echo '' >> $Changelog;
 echo >> $Changelog;
 
