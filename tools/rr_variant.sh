@@ -24,9 +24,9 @@
 
 echo -e ${ylw}"\n\n ▼ Which build-type do you want to choose?\n"${txtrst}
 echo -e "";
-echo -e ${blu}" 〉 1- Official "${txtrst}${red}"    ︱ Only for the official builds by the maintainers"${txtrst}
+echo -e ${blu}" 〉 1- Unofficial "${txtrst}${red}"  ︱ For the unofficial builds"${txtrst}
 echo -e "";
-echo -e ${blu}" 〉 2- Unofficial "${txtrst}${red}"  ︱ For the unofficial builds"${txtrst}
+echo -e ${blu}" 〉 2- Official "${txtrst}${red}"    ︱ Only for the official builds by the maintainers"${txtrst}
 echo -e "";
 echo -e ${blu}" 〉 3- Nightly "${txtrst}${red}"     ︱ Only for the official daily builds by the maintainers"${txtrst}
 echo -e "";
@@ -40,18 +40,18 @@ echo -e ${blu}" 〉 7- Experimental "${txtrst}${red}"︱ Only for the experiment
 echo -e "";
 echo -e ${blu}" 〉 8- Final "${txtrst}${red}"       ︱ Only for the final releases by the RR-Team"${xtrst}
 echo -e "";
-echo -e ${blu}" 〉 30/sec Time-out"${txtrst}${red}" ︱ Default option"${txtrst}
+echo -e ${blu}" 〉 5/sec Time-out"${txtrst}${red}"  ︱ Default option"${txtrst}
 echo -e "";
 echo -e ${cya}" ▼ Pick a number"${txtrst}
 echo -e "";
 $normal
-read -t 30 askvariant
+read -t 5 askvariant
 sleep 1
 if [ "$askvariant" == "1" ]
 then
 echo -e "";
-echo -e ${blu}" ▪ Building official variant "${txtrst}
-export RR_BUILDTYPE=Official
+echo -e ${blu}" ▪ Building unofficial variant "${txtrst}
+export RR_BUILDTYPE=Unofficial
 echo -e "";
 echo -e "";
 $normal
@@ -60,8 +60,8 @@ fi
 if [ "$askvariant" == "2" ]
 then
 echo -e "";
-echo -e ${blu}" ▪ Building unofficial variant "${txtrst}
-export RR_BUILDTYPE=Unofficial
+echo -e ${blu}" ▪ Building official variant "${txtrst}
+export RR_BUILDTYPE=Official
 echo -e "";
 echo -e "";
 $normal
