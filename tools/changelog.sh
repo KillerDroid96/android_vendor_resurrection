@@ -46,7 +46,7 @@ if [ -z $days_to_log ];then
 echo ""
 echo ${ylw}" ▼ For how many days changelog do you want to generate?"${txtrst}
 echo ""
-echo -e ${blu}" 🕑  30/sec Time-out "${txtrst}${red}"︱ 7 Days by default"${txtrst}
+echo -e ${blu}" 〉 30/sec Time-out"${txtrst}${red}" ︱ 7 Days by default"${txtrst}
 echo -e "";
 echo -e ${cya}" ▼ Type a number"${txtrst}
 echo -e "";
@@ -54,7 +54,7 @@ echo -e "";
 read -r -t 30 days_to_log || days_to_log=7
 fi
 echo >> $Changelog;
-echo " ▼ $source_name Ver 5.8.3 Changelog"    >> $Changelog;
+echo " ▼ $source_name Ver 5.8.4 Changelog"    >> $Changelog;
 echo '' >> $Changelog;
 echo >> $Changelog;
 
