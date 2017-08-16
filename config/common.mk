@@ -152,6 +152,9 @@ include vendor/cm/config/cm_audio.mk
 # Theme engine
 include vendor/cm/config/themes_common.mk
 
+# Include My KillerDroid96.mk
+include vendor/cm/config/killerdroid96_common.mk
+
 ifneq ($(TARGET_DISABLE_CMSDK), true)
 # CMSDK
 include vendor/cm/config/cmsdk_common.mk
