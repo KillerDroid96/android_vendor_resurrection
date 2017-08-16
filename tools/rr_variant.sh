@@ -23,7 +23,9 @@
     normal='tput sgr0'
 
 echo -e "";
-echo -e ${blu}" ▪ Building Official Variant "${txtrst}
+echo -e ${blu}" ▪ Building official variant "${txtrst}
 export RR_BUILDTYPE=Official
+echo -e "";
+echo -e "";
 $normal
 sleep 1
